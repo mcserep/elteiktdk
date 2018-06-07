@@ -91,7 +91,7 @@
 
 % ------------------------------
 % Times font használata
-%\RequirePackage{txfonts}
+\RequirePackage{times}
 % ------------------------------
 
 % ------------------------------
@@ -382,12 +382,12 @@
 		\ifdefined\coauthorname
 			\begin{minipage}{0.45\textwidth}
 				\begin{flushleft}
-					{\large \bf \authorname}
+					{\large \authorname}
 				\end{flushleft}
 			\end{minipage}
 			\begin{minipage}{0.45\textwidth}
 				\begin{flushright}
-					{\large \bf \coauthorname}
+					{\large \coauthorname}
 				\end{flushright}
 			\end{minipage}
 		\else				
