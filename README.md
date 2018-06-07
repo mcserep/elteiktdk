@@ -1,4 +1,4 @@
-# ELTE IK TDK-szakdolgozat és sablon
+# ELTE IK TDK-dolgozat sablon
 
 A [tdk.tex](tdk.tex) és a belőle előálló [tdk.pdf](tdk.pdf) szolgál kiindulási példaként.
 A sablon alkalmazza a TDK-dolgozatokra vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a fedő- és a címlapot.
