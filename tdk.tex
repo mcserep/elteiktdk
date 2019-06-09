@@ -1,12 +1,18 @@
 \documentclass[
-	%final % Megadásával a teendők elrejtésre kerülnek
-]{elteiktdk}[2019/04/30]
+	%parspace, % Térköz bekezdések közé / Add vertical space between paragraphs
+	%noindent, % Bekezdésének első sora ne legyen behúzva / No indentation of first lines in each paragraph
+	%nohyp, % Szavak sorvégi elválasztásának tiltása / No hypenation of words
+	%twoside, % Kétoldalas nyomtatás / Double sided format
+	%final, % Teendők elrejtése / Set final to hide todos
+]{elteiktdk}[2019/06/09]
 
 % Dolgozat metaadatai
+% Document's metadata
 \title{TDK-dolgozat címe}
 \date{2019}
 
 % Szerző(k) metaadatai
+% Author(s)' metadata
 \author{Hallgató Hanga}
 \degree{programtervező informatikus MSc}
 \period{2. évfolyam}
@@ -15,12 +21,14 @@
 \coperiod{3. évfolyam}
 
 % Témavezető(k) metaadatai
+% Superivsor(s)' metadata
 \supervisor{Témavezető Tamás}
 \affiliation{egyetemi tanársegéd}
 \cosupervisor{Témavezető Teréz}
 \coaffiliation{egyetemi adjunktus}
 
 % Egyetem metaadatai
+% University's metadata
 \university{Eötvös Loránd Tudományegyetem}
 \faculty{Informatikai Kar}
 \department{Programozáselmélet és Szoftvertechnológiai Tanszék}
@@ -28,33 +36,40 @@
 \logo{elte_cimer_szines}
 
 % Irodalomjegyzék hozzáadása
+% Add bibliography file
 \addbibresource{tdk.bib}
 
 % A dolgozat
+% The document
 \begin{document}
-	
+
 % Nyelv kiválasztása
+% Set document language
 \documentlang{magyar}
 %\documentlang{english}
 
-% Teendők listája - final dokumentumban nincs	
+% Teendők listája (final dokumentumban nincs)
+% List of todos (not in the final document)
 \listoftodos[\todolabel]
 \cleardoublepage
 
-% Lábjegyzet folytonos számozása fejezetek között
-\counterwithout{footnote}{chapter}
+% Dokumentum beállítások
+% Some document settings
+\input{settings.tex}
 
-% Fedő- és címlap - kötelező
+% Fedő- és címlap (kötelező)
+% Cover and title page (mandatory)
 \makecover
 \cleardoublepage
 \maketitle
 
-
-% Tartalomjegyzék - kötelező
+% Tartalomjegyzék (kötelező)
+% Table of contents (mandatory)
 \tableofcontents
 \cleardoublepage
 
 % Tartalom
+% Main content
 \input{chapters/intro.tex}
 \cleardoublepage
 
@@ -67,23 +82,38 @@
 \input{chapters/sum.tex}
 \cleardoublepage
 
-% Irodalomjegyzék - kötelező
+% Függelékek (opcionális) - hosszabb részletező táblázatok, sok és/vagy nagy kép esetén hasznos
+% Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
+\appendix
+\input{appendices/sim.tex}
+\cleardoublepage
+
+% Irodalomjegyzék (kötelező)
+% Bibliography (mandatory)
 \addcontentsline{toc}{chapter}{\biblabel}
 \printbibliography[title=\biblabel]
 \cleardoublepage
 
-% Ábrajegyzék - ha szükséges
+% Ábrajegyzék (opcionális) - 3-5 ábra fölött érdemes
+% List of figures (optional) - useful over 3-5 figures
 \addcontentsline{toc}{chapter}{\lstfigurelabel}
 \listoffigures
 \cleardoublepage
 
-% Táblázatjegyzék - ha szükséges
+% Táblázatjegyzék (opcionális) - 3-5 táblázat fölött érdemes
+% List of tables (optional) - useful over 3-5 tables
 \addcontentsline{toc}{chapter}{\lsttablelabel}
 \listoftables
 \cleardoublepage
 
-% Forráskódjegyzék - ha szükséges
+% Forráskódjegyzék (opcionális) - 3-5 kódpélda fölött érdemes
+% List of codes (optional) - useful over 3-5 code samples
 \addcontentsline{toc}{chapter}{\lstcodelabel}
 \lstlistoflistings
+\cleardoublepage
+
+% Jelölésjegyzék (opcionális)
+% List of symbols (optional)
+%\printnomenclature
 
 \end{document}

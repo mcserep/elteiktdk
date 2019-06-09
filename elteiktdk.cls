@@ -1,6 +1,6 @@
 %% MIT License
 %%
-%% Version 1.1, 2019/04/30
+%% Version 1.2, 2019/06/09
 %% Copyright (c) 2013-2019 Máté Cserép, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,15 +22,111 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteiktdk}[2019/04/30 ELTE IK TDK-dolgozat sablon]
+\ProvidesClass{elteiktdk}[2019/06/09 ELTE FI TDK thesis template]
 
+% LaTeX programozói eszközök
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{ifthen}
+
+% ------------------------------
+% Paraméterek feldolgozása
+\newtoggle{oneside}\toggletrue{oneside}
+\newtoggle{hypenation}\toggletrue{hypenation}
+\newtoggle{parspace}\togglefalse{parspace}
+\newtoggle{indent}\toggletrue{indent}
+
+\DeclareOption{nohyp}{\togglefalse{hypenation}}
+\DeclareOption{parspace}{\toggletrue{parspace}}
+\DeclareOption{noindent}{\togglefalse{indent}}
+\DeclareOption{twoside}{
+	\PassOptionsToClass{\CurrentOption}{report}
+	\PassOptionsToClass{openright}{report}
+	\togglefalse{oneside}
+}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions \relax
 
-% Egyoldalashoz
+% Osztály betöltése (alapértelmezett beállítások)
 \LoadClass[a4paper, 12pt, oneside]{report}
-% Kétoldalashoz
-%\LoadClass[a4paper, 12pt, twoside, openright]{report}
+% ------------------------------
+
+% ------------------------------
+% Metaadatok
+\DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
+\NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
+\NewDocumentCommand{\period}{m}{\newcommand{\periodname}{#1}}
+
+\NewDocumentCommand{\coauthor}{m}{\newcommand{\coauthorname}{#1}}
+\NewDocumentCommand{\codegree}{m}{\newcommand{\codegreename}{#1}}
+\NewDocumentCommand{\coperiod}{m}{\newcommand{\coperiodname}{#1}}
+
+\NewDocumentCommand{\supervisor}{m}{\newcommand{\supname}{#1}}
+\NewDocumentCommand{\affiliation}{m}{\newcommand{\supaff}{#1}}
+
+\NewDocumentCommand{\cosupervisor}{m}{\newcommand{\cosupname}{#1}}
+\NewDocumentCommand{\coaffiliation}{m}{\newcommand{\cosupaff}{#1}}
+
+\NewDocumentCommand{\university}{m}{\newcommand{\univname}{#1}}
+\NewDocumentCommand{\faculty}{m}{\newcommand{\facname}{#1}}
+\NewDocumentCommand{\department}{m}{\newcommand{\deptname}{#1}}
+\NewDocumentCommand{\city}{m}{\newcommand{\cityname}{#1}}
+\NewDocumentCommand{\logo}{m}{\newcommand{\logofilename}{#1}}
+
+\DeclareDocumentCommand{\title}{m}{\newcommand{\thesistitle}{#1}\renewcommand{\@title}{#1}}
+\DeclareDocumentCommand{\date}{m}{\newcommand{\thesisyear}{#1}\renewcommand{\@date}{#1}}
+% ------------------------------
+
+% ------------------------------
+% Fordítások
+\DeclareDocumentCommand{\documentlang}{m}{
+	\selectlanguage{#1}
+
+	% Magyar
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
+	{
+		\newcommand{\authorlabel}{Szerző}
+		\newcommand{\authorslabel}{Szerzők}
+		\newcommand{\suplabel}{Témavezető}
+		\newcommand{\supslabel}{Témavezetők}
+
+		\newcommand{\deflabel}{Definíció}
+		\newcommand{\theolabel}{Tétel}
+		\newcommand{\remlabel}{Emlékeztető}
+		\newcommand{\notelabel}{Megjegyzés}
+
+		\newcommand{\codelabel}{forráskód}
+		\newcommand{\alglabel}{Algoritmus}
+
+		\newcommand{\biblabel}{Irodalomjegyzék}
+		\newcommand{\lstfigurelabel}{Ábrajegyzék}
+		\newcommand{\lsttablelabel}{Táblázatjegyzék}
+		\newcommand{\lstcodelabel}{Forráskódjegyzék}
+		\newcommand{\lstnomencl}{Jelölésjegyzék}
+		\newcommand{\todolabel}{Teendők listája}
+	}{ % Angol
+		\newcommand{\authorlabel}{Author}
+		\newcommand{\authorslabel}{Authors}
+		\newcommand{\suplabel}{Supervisor}
+		\newcommand{\supslabel}{Supervisors}
+
+		\newcommand{\deflabel}{Definiton}
+		\newcommand{\theolabel}{Theorem}
+		\newcommand{\remlabel}{Remark}
+		\newcommand{\notelabel}{Note}
+
+		\newcommand{\codelabel}{Code}
+		\newcommand{\alglabel}{Algorithm}
+
+		\newcommand{\biblabel}{Bibliograhpy}
+		\newcommand{\lstfigurelabel}{List of Figures}
+		\newcommand{\lsttablelabel}{List of Tables}
+		\newcommand{\lstcodelabel}{List of Codes}
+		\newcommand{\lstnomencl}{List of Symbols}
+		\newcommand{\todolabel}{Todo list}
+	}
+}
+% ------------------------------
 
 % ------------------------------
 % Fejlécek és láblécek
@@ -46,11 +142,13 @@
 
 % Fejléc törlése
 \fancyhead{}
-% Fejléc beállítása (egyoldalashoz)
-\fancyhead[C]{\slshape \leftmark}
-% Fejléc beállítása (kétoldalashoz)
-%\fancyhead[EC]{\slshape \leftmark}
-%\fancyhead[OC]{\slshape \rightmark}
+% Fejléc beállítása
+\iftoggle{oneside}{ % egyoldalashoz
+	\fancyhead[C]{\slshape \leftmark}
+}{ % kétoldalashoz
+	\fancyhead[EC]{\slshape \leftmark}
+	\fancyhead[OC]{\slshape \rightmark}
+}
 
 % Fejléc és lábléc távolsága a tartalomtól
 \topskip = 15pt		% default: 10pt
@@ -90,11 +188,6 @@
 % ------------------------------
 
 % ------------------------------
-% Times font használata
-\RequirePackage{times}
-% ------------------------------
-
-% ------------------------------
 % Grafika
 \RequirePackage{graphicx}
 \RequirePackage{float}
@@ -111,6 +204,8 @@
 \DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg}
 % Képek tárolási helye
 \graphicspath{{./images/}}
+% Ábrajegyzék elnevezése
+\renewcommand{\listfigurename}{\lstfigurelabel}
 % ------------------------------
 
 % ------------------------------
@@ -128,9 +223,20 @@
 
 % ------------------------------
 % Térköz bekezdések közé
-%\RequirePackage{parskip}
-% A bekezdések első soros behúzása maradjon meg
-%\setlength{\parindent}{3.5ex}
+\iftoggle{parspace}{
+	\RequirePackage{parskip}
+	% A bekezdések első soros behúzása maradjon meg
+	\iftoggle{indent}{
+		\setlength{\parindent}{3.5ex}
+	}{}
+}{
+	% Nincs se térköz, se behúzás
+	\nottoggle{indent}{
+		\RequirePackage[skip=0pt]{parskip}
+	}{
+		% alapértelmezés szerint nincs térköz, de van behúzás
+	}
+}
 % ------------------------------
 
 % ------------------------------
@@ -142,8 +248,12 @@
 % ------------------------------
 % Helyközök és tördelés
 \linespread{1.5}
+% Egyszeres helyköz a mondatok végén
 \frenchspacing
+% Szavak jobb margón túlnyúlásának tiltása
 \sloppy
+% Szavak elválasztásának tiltása
+\nottoggle{hypenation}{\RequirePackage[none]{hyphenat}}{}
 
 % Beállítás alternatív módon
 \RequirePackage{setspace}
@@ -170,7 +280,21 @@
 % Matematikai mód
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
+\RequirePackage{amsfonts}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+% ------------------------------
+
+% ------------------------------
+% Tételek, definíciók
+\newtheorem{definition}{\deflabel}
+\newtheorem{theorem}{\theolabel}
+\newtheorem*{remark}{\remlabel}
+\newtheorem*{note}{\notelabel}
+% ------------------------------
+
+% ------------------------------
+% Times font használata
+\RequirePackage{mathptmx}
 % ------------------------------
 
 % ------------------------------
@@ -180,6 +304,7 @@
 % Színek
 \definecolor{codebackg}{rgb}{0.95,0.95,0.95}
 \definecolor{codecomment}{rgb}{0,0.6,0}
+\definecolor{codestring}{rgb}{0.58,0,0.82}
 \colorlet{todobackg}{orange!10}
 % ------------------------------
 
@@ -203,6 +328,10 @@
 \RequirePackage{longtable}
 % Celltartalmak vertikális igazítása
 \RequirePackage{array}
+% Sortörés táblázat cellákban
+\RequirePackage{makecell}
+% Táblázatjegyzék elnevezése
+\renewcommand{\listtablename}{\lsttablelabel}
 % ------------------------------
 
 % ------------------------------
@@ -213,9 +342,8 @@
 % ------------------------------
 
 % ------------------------------
-% Lábjegyzet folytonos számozása fejezetek között
+% Számozott elemek kezelése
 \RequirePackage{chngcntr}
-%\counterwithout{footnote}{chapter} % documenten belülre kell helyezni
 % Lábjegyzet oldalak közti eltörésének tiltása
 \interfootnotelinepenalty=10000
 % ------------------------------
@@ -241,14 +369,12 @@
 	style=numeric, % irodalomjegyzék stílusa
 	sorting=none   % idézések rendezettségee
 ]{biblatex}
-% -----------------------------
+% ------------------------------
 
 % ------------------------------
 % Feliratok, tartalomjegyzék, ábrajegyzék, táblázatjegyzék
 \RequirePackage[justification=centering]{caption}
 \RequirePackage[subfigure]{tocloft}
-% Tartalomjegyzék oldalszámozásának rejtése
-\tocloftpagestyle{empty}
 
 % ------------------------------
 
@@ -260,15 +386,16 @@
 
 % ------------------------------
 % Jelölésjegyzék
-\RequirePackage [refpage,noprefix]{nomencl}
-\renewcommand{\nomname}{Jelölésjegyzék}
+\RequirePackage[intoc,noprefix,refpage]{nomencl}
 % Elemek közötti bigskip kihagyása
 \setlength{\nomitemsep}{-\parsep}
 % Jobbra igazítás
 \renewcommand{\nomlabel}[1]{\hfil \hfil #1}
 % Oldalhivatkozás megjelenése
 \renewcommand{\pagedeclaration}[1]{, #1}
-% Jelölésjegyzék elkészítse (még nem szúrja be)
+% Jelölésjegyzék elnevezése
+\renewcommand{\nomname}{\lstnomencl}
+% Jelölésjegyzék elkészítése (még nem szúrja be)
 \makenomenclature
 % ------------------------------
 
@@ -284,6 +411,7 @@
     backgroundcolor=\color{codebackg},
 	keywordstyle=\color{blue},
 	commentstyle=\color{codecomment},
+	stringstyle=\color{codestring},
 	stepnumber=1,
 	firstnumber=1,
 	numbersep=5pt,
@@ -295,13 +423,16 @@
 	breakatwhitespace=false,
 	float,
 	frame=linesc,
-	captionpos=b,
-	morekeywords={var}
+	captionpos=b
 }
+% Forráskód elnevezése
+\renewcommand{\lstlistingname}{\codelabel}
 % Forráskódjegyzék elnevezése
-\renewcommand\lstlistingname{forráskód}
+\renewcommand{\lstlistlistingname}{\lstcodelabel}
 % Algoritmus kommentek jobb szélre igazítása
 \renewcommand{\algorithmiccomment}[1]{\hfill {\it #1}}
+% Algoritmus elnevezése
+\renewcommand{\ALG@name}{\alglabel}
 % ------------------------------
 
 % ------------------------------
@@ -315,111 +446,29 @@
 % ------------------------------
 
 % ------------------------------
-% Metaadatok
-\RequirePackage{xparse}
-\DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
-\NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
-\NewDocumentCommand{\period}{m}{\newcommand{\periodname}{#1}}
-
-\NewDocumentCommand{\coauthor}{m}{\newcommand{\coauthorname}{#1}}
-\NewDocumentCommand{\codegree}{m}{\newcommand{\codegreename}{#1}}
-\NewDocumentCommand{\coperiod}{m}{\newcommand{\coperiodname}{#1}}
-
-\NewDocumentCommand{\supervisor}{m}{\newcommand{\supname}{#1}}
-\NewDocumentCommand{\affiliation}{m}{\newcommand{\supaff}{#1}}
-
-\NewDocumentCommand{\cosupervisor}{m}{\newcommand{\cosupname}{#1}}
-\NewDocumentCommand{\coaffiliation}{m}{\newcommand{\cosupaff}{#1}}
-
-\NewDocumentCommand{\university}{m}{\newcommand{\univname}{#1}}
-\NewDocumentCommand{\faculty}{m}{\newcommand{\facname}{#1}}
-\NewDocumentCommand{\department}{m}{\newcommand{\deptname}{#1}}
-\NewDocumentCommand{\city}{m}{\newcommand{\cityname}{#1}}
-\NewDocumentCommand{\logo}{m}{\newcommand{\logofilename}{#1}}
-
-\DeclareDocumentCommand{\title}{m}{\newcommand{\thesistitle}{#1}\renewcommand{\@title}{#1}}
-\DeclareDocumentCommand{\date}{m}{\newcommand{\thesisyear}{#1}\renewcommand{\@date}{#1}}
-% ------------------------------
-
-% ------------------------------
-% Fordítások
-\DeclareDocumentCommand{\documentlang}{m}{
-	\selectlanguage{#1}
-	
-	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
-	{
-		\newcommand{\authorlabel}{Szerző}
-		\newcommand{\authorslabel}{Szerzők}
-		\newcommand{\suplabel}{Témavezető}
-		\newcommand{\supslabel}{Témavezetők}
-		
-		\newcommand{\deflabel}{Definíció}
-		\newcommand{\theolabel}{Tétel}
-		\newcommand{\remlabel}{Emlékeztető}
-		\newcommand{\notelabel}{Megjegyzés}
-		
-		\newcommand{\biblabel}{Irodalomjegyzék}
-		\newcommand{\lstfigurelabel}{Ábrajegyzék}
-		\newcommand{\lsttablelabel}{Táblázatjegyzék}
-		\newcommand{\lstcodelabel}{Forráskódjegyzék}
-		\newcommand{\todolabel}{Teendők listája}
-	}
-	{
-		\newcommand{\authorlabel}{Author}
-		\newcommand{\authorslabel}{Authors}
-		\newcommand{\suplabel}{Supervisor}
-		\newcommand{\supslabel}{Supervisors}
-		
-		\newcommand{\deflabel}{Definiton}
-		\newcommand{\theolabel}{Theorem}
-		\newcommand{\remlabel}{Remark}
-		\newcommand{\notelabel}{Note}
-		
-		\newcommand{\biblabel}{Bibliograhpy}
-		\newcommand{\lstfigurelabel}{List of Figures}
-		\newcommand{\lsttablelabel}{List of Tables}
-		\newcommand{\lstcodelabel}{List of Codes}
-		\newcommand{\todolabel}{Todo list}
-	}
-
-	\renewcommand{\listfigurename}{\lstfigurelabel}		
-	\renewcommand{\listtablename}{\lsttablelabel}
-	\renewcommand{\lstlistlistingname}{\lstcodelabel}
-}
-% ------------------------------
-
-% ------------------------------
-% Tételek, definíciók
-\newtheorem{definition}{\deflabel}
-\newtheorem{theorem}{\theolabel}
-\newtheorem*{remark}{\remlabel}
-\newtheorem*{note}{\notelabel}
-% ------------------------------
-
-% ------------------------------
 % Fedőlap
 \newcommand{\makecover}{
 	\thispagestyle{empty}	
 	\begin{center}
 		\vspace*{\fill}
-			
+		
 		{\Large \bf TDK-dolgozat}
 		
 		\vfill
 		
 		\ifdefined\coauthorname
-			\begin{minipage}{0.45\textwidth}
-				\begin{flushleft}
-					{\large \authorname}
-				\end{flushleft}
-			\end{minipage}
-			\begin{minipage}{0.45\textwidth}
-				\begin{flushright}
-					{\large \coauthorname}
-				\end{flushright}
-			\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushleft}
+				{\large \authorname}
+			\end{flushleft}
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			\begin{flushright}
+				{\large \coauthorname}
+			\end{flushright}
+		\end{minipage}
 		\else				
-			{\large \authorname}										
+		{\large \authorname}										
 		\fi
 		
 		\vspace*{\fill}
@@ -435,7 +484,7 @@
 		\begin{center}
 			
 			\begin{spacing}{2.0}
-			{\bf \huge \thesistitle}\\[1.5cm]
+				{\bf \huge \thesistitle}\\[1.5cm]
 			\end{spacing}
 			
 			{\sc \LARGE \univname}\\[0.7cm]
@@ -444,48 +493,48 @@
 			\includegraphics[width=0.3\textwidth]{\logofilename}\\[1.0cm]
 			
 			\ifdefined\coauthorname
-				{\it \large \authorslabel:}\\[0.7cm]
-				\begin{minipage}{0.45\textwidth}
-					\begin{flushleft}
-						{\large \authorname}\\
-						\degreename\\
-						\periodname
-					\end{flushleft}
-				\end{minipage}
-				\begin{minipage}{0.45\textwidth}
-					\begin{flushright}
-						{\large \coauthorname}\\
-						\codegreename\\
-						\coperiodname
-					\end{flushright}
-				\end{minipage}
+			{\it \large \authorslabel:}\\[0.7cm]
+			\begin{minipage}{0.45\textwidth}
+				\begin{flushleft}
+					{\large \authorname}\\
+					\degreename\\
+					\periodname
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}{0.45\textwidth}
+				\begin{flushright}
+					{\large \coauthorname}\\
+					\codegreename\\
+					\coperiodname
+				\end{flushright}
+			\end{minipage}
 			\else				
-				{\it \large \authorlabel:}\\[0.7cm]
-				{\large \authorname}\\
-				\degreename\\
-				\periodname
+			{\it \large \authorlabel:}\\[0.7cm]
+			{\large \authorname}\\
+			\degreename\\
+			\periodname
 			\fi
 			
 			\vspace{1.5cm}
 			
 			\ifdefined\cosupname
-				{\it \large \supslabel:}\\[0.7cm]
-				\begin{minipage}{0.45\textwidth}
-					\begin{flushleft}
-						{\large \supname}\\
-						\supaff
-					\end{flushleft}
-				\end{minipage}
-				\begin{minipage}{0.45\textwidth}
-					\begin{flushright}
-						{\large \cosupname}\\
-						\cosupaff
-					\end{flushright}
-				\end{minipage}
+			{\it \large \supslabel:}\\[0.7cm]
+			\begin{minipage}{0.45\textwidth}
+				\begin{flushleft}
+					{\large \supname}\\
+					\supaff
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}{0.45\textwidth}
+				\begin{flushright}
+					{\large \cosupname}\\
+					\cosupaff
+				\end{flushright}
+			\end{minipage}
 			\else				
-				{\it \large \suplabel:}\\[0.7cm]
-				{\large \supname}\\
-				\supaff
+			{\it \large \suplabel:}\\[0.7cm]
+			{\large \supname}\\
+			\supaff
 			\fi
 			
 			\vfill
