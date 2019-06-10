@@ -12,15 +12,15 @@ A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (l
 ## Fordítás
 
 ```bash
-# thesis.aux fájl generálása (PDF fájl még hibás hivatkozásokat fog tartalmazni)
-pdflatex thesis.pdf
+# tdk.aux fájl generálása (PDF fájl még hibás hivatkozásokat fog tartalmazni)
+pdflatex tdk.tex
 # Irodalomjegyzék generálása
-bibtex thesis
+bibtex tdk
 # Jelölésjegyzék generálása (ha szükséges)
-makeindex -s nomencl.ist -t thesis.nlg -o thesis.nls thesis.nlo
+makeindex -s nomencl.ist -t tdk.nlg -o tdk.nls tdk.nlo
 # Végleges PDF fájl generálása
-pdflatex thesis.pdf
-pdflatex thesis.pdf
+pdflatex tdk.tex
+pdflatex tdk.tex
 ```
 
 **Megjegyzés:** az irodalomjegyzék változása esetén a `bibtex`, majd a `pdflatex` _kétszeri_ futtatása szükséges a helyes hivatkozások előállításához.
