@@ -10,15 +10,15 @@ The template supports producing both Hungarian and English theses, which can be 
 ## Compilation
 
 ```bash
-# Generate thesis.aux file (PDF file contains incorrect references yet)
-pdflatex thesis.pdf
+# Generate tdk.aux file (PDF file contains incorrect references yet)
+pdflatex tdk.tex
 # Generate bibliography
-bibtex thesis
+bibtex tdk
 # Generate nomenclature (optional)
-makeindex -s nomencl.ist -t thesis.nlg -o thesis.nls thesis.nlo
+makeindex -s nomencl.ist -t tdk.nlg -o tdk.nls tdk.nlo
 # Generate final PDF file
-pdflatex thesis.pdf
-pdflatex thesis.pdf
+pdflatex tdk.tex
+pdflatex tdk.tex
 ```
 
 **Note:** in case the bibliography changes, executing `bibtex`, then `pdflatex` _twice_ is required to generate to correct references in the PDF output.
