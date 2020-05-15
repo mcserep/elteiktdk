@@ -1,7 +1,7 @@
 %% MIT License
 %%
-%% Version 1.2, 2019/06/09
-%% Copyright (c) 2013-2019 Máté Cserép, Bálint Bognár
+%% Version 1.3, 2020/05/15
+%% Copyright (c) 2013-2020 Máté Cserép, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
 %% of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteiktdk}[2019/06/09 ELTE FI TDK thesis template]
+\ProvidesClass{elteiktdk}[2020/05/15 ELTE FI TDK thesis template]
 
 % LaTeX programozói eszközök
 \RequirePackage{etoolbox}
@@ -49,6 +49,14 @@
 
 % Osztály betöltése (alapértelmezett beállítások)
 \LoadClass[a4paper, 12pt, oneside]{report}
+% ------------------------------
+
+% ------------------------------
+% Karakterkódolás, nyelv
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english,magyar]{babel}
+\RequirePackage{indentfirst}
 % ------------------------------
 
 % ------------------------------
@@ -177,14 +185,6 @@
    {\pagestyle{empty}\origdoublepage}
  }
 \let\cleardoublepage\clearemptydoublepage
-% ------------------------------
-
-% ------------------------------
-% Karakterkódolás, nyelv
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage[english,magyar]{babel}
-\RequirePackage{indentfirst}
 % ------------------------------
 
 % ------------------------------
