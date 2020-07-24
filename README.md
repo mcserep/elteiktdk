@@ -1,3 +1,5 @@
+![CI status](https://github.com/mcserep/elteiktdk/workflows/Build%20LaTeX%20document/badge.svg)
+
 See [English version](README_en.md).
 
 # ELTE IK TDK-dolgozat sablon
