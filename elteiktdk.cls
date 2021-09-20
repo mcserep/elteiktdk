@@ -315,7 +315,7 @@
 % pdflatex-hez
 \newcommand{\hyperrefComp}{}
 
-\RequirePackage[pdfborder={0 0 0}, unicode, \hyperrefComp]{hyperref}
+\RequirePackage[pdfborder={0 0 0}, unicode, pdfusetitle, \hyperrefComp]{hyperref}
 \RequirePackage[all]{hypcap}
 \RequirePackage{url}
 \RequirePackage{bookmark}
