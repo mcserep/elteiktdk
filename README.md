@@ -33,7 +33,7 @@ A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStu
 
 **Képkezelés:**
 * Minimális és maximális méret: [adjustbox](https://ctan.org/pkg/adjustbox)
-* Alábrák: [subfigure](https://ctan.org/pkg/subfigure)
+* Alábrák: [subcaption](https://ctan.org/pkg/subcaption)
 * Forgatás: [rotating](https://ctan.org/pkg/rotating)
 
 **Táblázatkezelés:**
@@ -49,7 +49,7 @@ A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStu
 * Matematikai formulák: [amsmath](https://ctan.org/pkg/amsmath)
 * Matematikai definíciók: [amsthm](https://ctan.org/pkg/amsthm)
 * Matematikai szimbólumok: [amsfonts](https://ctan.org/pkg/amsfonts)
-* Algoritmusok: [algorithmic](https://ctan.org/pkg/algorithms)
+* * Algoritmusok: [algpseudocode](https://www.ctan.org/pkg/algorithmicx)
 * Kódblokkok: [listingsutf8](https://ctan.org/pkg/listingsutf8)
 
 **Egyebek:**
