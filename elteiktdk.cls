@@ -448,6 +448,7 @@
 % ------------------------------
 % Fedőlap
 \newcommand{\makecover}{
+	\phantomsection
 	\thispagestyle{empty}	
 	\begin{center}
 		\vspace*{\fill}
