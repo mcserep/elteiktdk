@@ -2,11 +2,28 @@ name: Build LaTeX document
 on: [push]
 jobs:
   build_latex:
+    strategy:
+      matrix:
+        engine: [pdflatex, lualatex]
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@master
+      - if: ${{ matrix.engine == 'pdflatex' }}
+        name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: tdk.tex
+      - if: ${{ matrix.engine == 'lualatex' }}
+        name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tdk.tex
+          latexmk_use_lualatex: true
+      - name: Upload the compiled pdf
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: tdk-${{ matrix.engine }}
+          path: |
+            tdk.pdf
+          if-no-files-found: error
