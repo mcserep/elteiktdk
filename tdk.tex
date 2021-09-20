@@ -54,10 +54,6 @@
 %\listoftodos[\todolabel]
 %\cleardoublepage
 
-% Dokumentum beállítások
-% Some document settings
-\input{settings.tex}
-
 % Fedő- és címlap (kötelező)
 % Cover and title page (mandatory)
 \makecover
@@ -108,6 +104,13 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{\lsttablelabel}
 \listoftables
+\cleardoublepage
+
+% Algorithmusjegyzék
+% List of algorithms
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstalgorithmlabel}
+\listofalgorithms
 \cleardoublepage
 
 % Forráskódjegyzék (opcionális) - 3-5 kódpélda fölött érdemes
