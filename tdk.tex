@@ -1,18 +1,16 @@
 \documentclass[
-	%parspace, % Térköz bekezdések közé / Add vertical space between paragraphs
-	%noindent, % Bekezdésének első sora ne legyen behúzva / No indentation of first lines in each paragraph
-	%nohyp, % Szavak sorvégi elválasztásának tiltása / No hypenation of words
-	%twoside, % Kétoldalas nyomtatás / Double sided format
-	%draft, % Gyorsabb fordítás ábrák rajzolása nélkül / Quicker draft compilation without rendering images
-	%final, % Teendők elrejtése / Set final to hide todos
+	%parspace, % Add vertical space between paragraphs
+	%noindent, % No indentation of first lines in each paragraph
+	%nohyp, % No hypenation of words
+	%twoside, % Double sided format
+	%draft, % Quicker draft compilation without rendering images
+	%final, % Set final to hide todos
 ]{elteiktdk}[2021/09/20]
 
-% Dolgozat metaadatai
 % Document's metadata
 \title{TDK-dolgozat címe}
 \date{2020}
 
-% Szerző(k) metaadatai
 % Author(s)' metadata
 \author{Hallgató Hanga}
 \degree{programtervező informatikus MSc}
@@ -21,14 +19,12 @@
 \codegree{programtervező informatikus BSc}
 \coperiod{3. évfolyam}
 
-% Témavezető(k) metaadatai
 % Superivsor(s)' metadata
 \supervisor{Témavezető Tamás}
 \affiliation{egyetemi tanársegéd}
 \cosupervisor{Témavezető Teréz}
 \coaffiliation{egyetemi adjunktus}
 
-% Egyetem metaadatai
 % University's metadata
 \university{Eötvös Loránd Tudományegyetem}
 \faculty{Informatikai Kar}
@@ -36,36 +32,29 @@
 \city{Budapest}
 \logo{elte_cimer_szines}
 
-% Irodalomjegyzék hozzáadása
 % Add bibliography file
 \addbibresource{tdk.bib}
 
-% A dolgozat
 % The document
 \begin{document}
 
-% Nyelv kiválasztása
 % Set document language
-\documentlang{magyar}
+\documentlang{hungarian}
 %\documentlang{english}
 
-% Teendők listája (final dokumentumban nincs)
 % List of todos (not in the final document)
 %\listoftodos[\todolabel]
 %\cleardoublepage
 
-% Fedő- és címlap (kötelező)
 % Cover and title page (mandatory)
 \makecover
 \cleardoublepage
 \maketitle
 
-% Tartalomjegyzék (kötelező)
 % Table of contents (mandatory)
 \tableofcontents
 \cleardoublepage
 
-% Tartalom
 % Main content
 \input{chapters/intro.tex}
 \cleardoublepage
@@ -79,48 +68,41 @@
 \input{chapters/sum.tex}
 \cleardoublepage
 
-% Függelékek (opcionális) - hosszabb részletező táblázatok, sok és/vagy nagy kép esetén hasznos
 % Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
 \appendix
 \input{appendices/sim.tex}
 \cleardoublepage
 
-% Irodalomjegyzék (kötelező)
 % Bibliography (mandatory)
 \phantomsection
 \addcontentsline{toc}{chapter}{\biblabel}
 \printbibliography[title=\biblabel]
 \cleardoublepage
 
-% Ábrajegyzék (opcionális) - 3-5 ábra fölött érdemes
 % List of figures (optional) - useful over 3-5 figures
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstfigurelabel}
 \listoffigures
 \cleardoublepage
 
-% Táblázatjegyzék (opcionális) - 3-5 táblázat fölött érdemes
 % List of tables (optional) - useful over 3-5 tables
 \phantomsection
 \addcontentsline{toc}{chapter}{\lsttablelabel}
 \listoftables
 \cleardoublepage
 
-% Algorithmusjegyzék
 % List of algorithms
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstalgorithmlabel}
 \listofalgorithms
 \cleardoublepage
 
-% Forráskódjegyzék (opcionális) - 3-5 kódpélda fölött érdemes
 % List of codes (optional) - useful over 3-5 code samples
 \phantomsection
 \addcontentsline{toc}{chapter}{\lstcodelabel}
 \lstlistoflistings
 \cleardoublepage
 
-% Jelölésjegyzék (opcionális)
 % List of symbols (optional)
 %\printnomenclature
 
