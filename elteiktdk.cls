@@ -501,10 +501,8 @@
 	\begin{titlepage}
 
 		\begin{center}
-
-			\begin{spacing}{2.0}
-				{\bf \huge \thesistitle}\\[1.5cm]
-			\end{spacing}
+			{\bf \huge \thesistitle \par}
+			\vspace{1.5cm}
 
 			{\sc \LARGE \univname}\\[0.7cm]
 			{\sc \Large \facname}\\[0.7cm]
