@@ -21,7 +21,7 @@ jobs:
           root_file: tdk.tex
           latexmk_use_lualatex: true
       - name: Upload the compiled pdf
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3
         with:
           name: tdk-${{ matrix.engine }}
           path: |
