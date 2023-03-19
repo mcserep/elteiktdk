@@ -60,7 +60,7 @@
 	\RequirePackage[utf8]{inputenc}
 	\RequirePackage[T1]{fontenc}
 \fi
-\RequirePackage[english,magyar]{babel}
+\RequirePackage[english,hungarian]{babel}
 \RequirePackage{indentfirst}
 % ------------------------------
 
@@ -96,7 +96,7 @@
 	\selectlanguage{#1}
 
 	% Magyar
-	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{magyar}}}
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{hungarian}}}
 	{
 		\newcommand{\authorlabel}{Szerző}
 		\newcommand{\authorslabel}{Szerzők}
@@ -380,7 +380,7 @@
 
 % ------------------------------
 % Irodalomjegyzék
-\RequirePackage[style=english]{csquotes}
+\RequirePackage[autostyle=true]{csquotes}
 \RequirePackage[
 	backend=bibtex,
 	style=numeric, % irodalomjegyzék stílusa
@@ -465,14 +465,14 @@
 % Fedőlap
 \newcommand{\makecover}{
 	\phantomsection
-	\thispagestyle{empty}	
+	\thispagestyle{empty}
 	\begin{center}
 		\vspace*{\fill}
-		
+
 		{\Large \bf TDK-dolgozat}
-		
+
 		\vfill
-		
+
 		\ifdefined\coauthorname
 		\begin{minipage}{0.45\textwidth}
 			\begin{flushleft}
@@ -484,10 +484,10 @@
 				{\large \coauthorname}
 			\end{flushright}
 		\end{minipage}
-		\else				
-		{\large \authorname}										
+		\else
+		{\large \authorname}
 		\fi
-		
+
 		\vspace*{\fill}
 	\end{center}
 }
@@ -497,18 +497,18 @@
 % Címlap
 \renewcommand{\maketitle}{
 	\begin{titlepage}
-		
+
 		\begin{center}
-			
+
 			\begin{spacing}{2.0}
 				{\bf \huge \thesistitle}\\[1.5cm]
 			\end{spacing}
-			
+
 			{\sc \LARGE \univname}\\[0.7cm]
 			{\sc \Large \facname}\\[0.7cm]
 			{\sc \large \deptname}\\[1.0cm]
 			\includegraphics[width=0.3\textwidth]{\logofilename}\\[1.0cm]
-			
+
 			\ifdefined\coauthorname
 			{\it \large \authorslabel:}\\[0.7cm]
 			\begin{minipage}{0.45\textwidth}
@@ -525,15 +525,15 @@
 					\coperiodname
 				\end{flushright}
 			\end{minipage}
-			\else				
+			\else
 			{\it \large \authorlabel:}\\[0.7cm]
 			{\large \authorname}\\
 			\degreename\\
 			\periodname
 			\fi
-			
+
 			\vspace{1.5cm}
-			
+
 			\ifdefined\cosupname
 			{\it \large \supslabel:}\\[0.7cm]
 			\begin{minipage}{0.45\textwidth}
@@ -548,25 +548,25 @@
 					\cosupaff
 				\end{flushright}
 			\end{minipage}
-			\else				
+			\else
 			{\it \large \suplabel:}\\[0.7cm]
 			{\large \supname}\\
 			\supaff
 			\fi
-			
+
 			\vfill
-			
+
 			\cityname, \thesisyear
-			
+
 		\end{center}
-		
+
 	\end{titlepage}
 }
 % ------------------------------
 
 \AtBeginDocument{
 	% If the minted package is loaded, then provide a default for the formatting,
-	% and set the labels for the listings 
+	% and set the labels for the listings
 	\@ifpackageloaded{minted}{
 		\setminted{
 			style=tango,
@@ -586,7 +586,7 @@
 			listname=\lstcodelabel, % Forráskódjegyzék elnevezése
 		}
 	}
-	
+
 	% Az oldalszámozás a tartalomjegyzékkel kezdődik, de ott nem látható
 	\let\oldtableofcontents\tableofcontents
 	\renewcommand{\tableofcontents}{
@@ -594,7 +594,7 @@
 		\oldtableofcontents
 		\cleardoublepage
 		% Oldalszám mentése és betöltése, mert a \pagenumbering visszállítja
-		\newcounter{conpageno} 
+		\newcounter{conpageno}
 		\defcounter{conpageno}{\value{page}}
 		\pagenumbering{arabic}
 		\setcounter{page}{\value{conpageno}}
