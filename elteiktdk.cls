@@ -117,7 +117,8 @@
 		\newcommand{\lsttablelabel}{Táblázatjegyzék}
 		\newcommand{\lstcodelabel}{Forráskódjegyzék}
 		\newcommand{\lstnomencl}{Jelölésjegyzék}
-		\newcommand{\todolabel}{Teendők listája}
+		\newcommand{\todolabel}{Teendők listája}		
+		\newcommand{\acklabel}{Köszönyetnyilvánítás}
 	}{ % English
 		\newcommand{\authorlabel}{Author}
 		\newcommand{\authorslabel}{Authors}
@@ -139,6 +140,7 @@
 		\newcommand{\lstcodelabel}{List of Codes}
 		\newcommand{\lstnomencl}{List of Symbols}
 		\newcommand{\todolabel}{Todo list}
+		\newcommand{\acklabel}{Acknowledgements}
 	}
 }
 % ------------------------------
