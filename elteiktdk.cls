@@ -1,7 +1,7 @@
 %% MIT License
 %%
-%% Version 1.4, 2021/09/20
-%% Copyright (c) 2013-2021 Máté Cserép, Bálint Bognár
+%% Version 1.5, 2023/03/27
+%% Copyright (c) 2013-2023 Máté Cserép, Bálint Bognár
 %%
 %% Permission is hereby granted, free of charge, to any person obtaining a copy
 %% of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 %% SOFTWARE.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elteiktdk}[2021/09/20 ELTE FI TDK thesis template]
+\ProvidesClass{elteiktdk}[2023/03/27 ELTE FI TDK thesis template]
 
 % LaTeX programming tools
 \RequirePackage{etoolbox}
