@@ -5,42 +5,46 @@
 	%twoside, % Double sided format
 	%draft, % Quicker draft compilation without rendering images
 	%final, % Set final to hide todos
-]{elteiktdk}[2023/03/27]
+]{elteiktdk}[2023/04/10]
+
+% The minted package is also supported for source highlighting
+% See minted-intregration.tex for example
+%\usepackage[newfloat]{minted}
 
 % Document's metadata
 \title{TDK-dolgozat címe}
-\date{2020}
+\date{2023}
 
 % Author(s)' metadata
-\author{Hallgató Hanga}
-\degree{programtervező informatikus MSc}
-\period{2. évfolyam}
-\coauthor{Hallgató Harold}
-\codegree{programtervező informatikus BSc}
-\coperiod{3. évfolyam}
+\author{John Smith}
+\degree{Computer Science MSc}
+\period{V. grade}
+\coauthor{Jane Smith}
+\codegree{Computer Science MSc}
+\coperiod{IV. grade}
 
 % Superivsor(s)' metadata
-\supervisor{Témavezető Tamás}
-\affiliation{egyetemi tanársegéd}
-\cosupervisor{Témavezető Teréz}
-\coaffiliation{egyetemi adjunktus}
+\supervisor{John Doe}
+\affiliation{Assistant Lecturer}
+\cosupervisor{Jane Doe}
+\coaffiliation{PhD Student}
 
 % University's metadata
-\university{Eötvös Loránd Tudományegyetem}
-\faculty{Informatikai Kar}
-\department{Programozáselmélet és Szoftvertechnológiai Tanszék}
+\university{Eötvös Loránd University}
+\faculty{Faculty of Informatics}
+\department{Dept. of Software Technology and Methodology}
 \city{Budapest}
 \logo{elte_cimer_szines}
 
 % Add bibliography file
-\addbibresource{tdk.bib}
+\addbibresource{elteiktdk.bib}
 
 % The document
 \begin{document}
 
 % Set document language
-\documentlang{hungarian}
-%\documentlang{english}
+%\documentlang{hungarian}
+\documentlang{english}
 
 % List of todos (not in the final document)
 %\listoftodos[\todolabel]
@@ -56,26 +60,26 @@
 \cleardoublepage
 
 % Main content
-\input{chapters/intro.tex}
+\input{samples_en/intro.tex}
 \cleardoublepage
 
-\input{chapters/spec.tex}
+\input{samples_en/spec.tex}
 \cleardoublepage
 
-\input{chapters/impl.tex}
+\input{samples_en/impl.tex}
 \cleardoublepage
 
-\input{chapters/sum.tex}
+\input{samples_en/sum.tex}
 \cleardoublepage
 
 % Acknowledgements (optional) - in case your thesis received funding or would like to express special thanks to someone
 \chapter*{\acklabel}
 \addcontentsline{toc}{chapter}{\acklabel}
-Amennyiben a TDK projekted pénzügyi támogatást kapott egy projektből vagy az egyetemtől, jellemzően kötelező feltüntetni a dolgozatban is. A dolgozat elkészítéséhez segítséget nyújtó oktatók, hallgatótársak, kollégák felé is nyilvánítható külön köszönet.
+In case your TDK thesis received financial support from a project or the university, it is usually required to indicate the proper attribution in the thesis itself. Special thanks can also be expressed towards teachers, fellow students and colleagues who helped you in the process of creating your thesis.
 
 % Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
 \appendix
-\input{appendices/sim.tex}
+\input{samples_en/sim.tex}
 \cleardoublepage
 
 % Bibliography (mandatory)

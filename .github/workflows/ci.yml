@@ -13,17 +13,24 @@ jobs:
         name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: tdk.tex
+          root_file: |
+            elteiktdk_hu.tex
+            elteiktdk_en.tex
+          latexmk_shell_escape: true
       - if: ${{ matrix.engine == 'lualatex' }}
         name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: tdk.tex
+          root_file: |
+            elteiktdk_hu.tex
+            elteiktdk_en.tex
+          latexmk_shell_escape: true
           latexmk_use_lualatex: true
       - name: Upload the compiled pdf
         uses: actions/upload-artifact@v3
         with:
           name: tdk-${{ matrix.engine }}
           path: |
-            tdk.pdf
+            elteiktdk_hu.pdf
+            elteiktdk_en.pdf
           if-no-files-found: error

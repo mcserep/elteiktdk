@@ -1,10 +1,10 @@
-\chapter{Megvalósítás és alkalmazás} % Implementation and usage
+\chapter{Implementation and usage}
 \label{ch:impl}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nibh leo, dapibus in elementum nec, aliquet id sem. Suspendisse potenti. Nullam sit amet consectetur nibh. Donec scelerisque varius turpis at tincidunt.
 
 
-\section{Tételek, definíciók, megjegyzések} % Theorem-like items
+\section{Theorem-like environments}
 
 \begin{definition}
 Mauris tristique sollicitudin ultrices. Etiam tristique quam sit amet metus dictum imperdiet. Nunc id lorem sed nisl pulvinar aliquet vitae quis arcu. Morbi iaculis eleifend porttitor.
@@ -33,7 +33,7 @@ Aliquam vehicula luctus mi a pretium. Nulla quam neque, maximus nec velit in, al
 
 Ut sollicitudin tempus urna et mollis. Aliquam et aliquam turpis, sed fermentum mauris. Nulla eget ex diam. Donec eget tellus pharetra, semper neque eget, rutrum diam.
 
-\subsection{Egyenletek, matematika} % Equations, formulas
+\subsection{Equations, formulas}
 
 Duis suscipit ipsum nec urna blandit, $2 + 2 = 4$ pellentesque vehicula quam fringilla. Vivamus euismod, lectus sit amet euismod viverra, dolor metus consequat sapien, ut hendrerit nisl nulla id nisi. Nam in leo eu quam sollicitudin semper a quis velit.
 
@@ -61,7 +61,7 @@ Omissa numeratione aliquarum aequationum:
 	& =\sum_{j=1}^{n} \sum_{i=1}^{m} a_{ij}x_jv_i
 \end{align}
 
-\section{Forráskódok} % Source code samples
+\section{Source code samples}
 
 Nulla sodales purus id mi consequat, eu venenatis odio pharetra. Cras a arcu quam. Suspendisse augue risus, pulvinar a turpis et, commodo aliquet turpis. Nulla aliquam scelerisque mi eget pharetra. Mauris sed posuere elit, ac lobortis metus. Proin lacinia sit amet diam sed auctor. Nam viverra orci id sapien sollicitudin, a aliquam lacus suscipit. Quisque ac tincidunt leo Code~\ref{src:cpp} and \ref{src:csharp}:
 
@@ -99,7 +99,7 @@ namespace HelloWorld
 }
 \end{lstlisting}
 
-\subsection{Algoritmusok} % Algorithms
+\subsection{Algorithms}
 
 A general Interval Branch and Bound algorithm is shown in Algorithm~\ref{alg:ibb}. An appropriate selection rule is applied in Step~\ref{step:selrule}.\\
 Source of example: \href{https://www.inf.u-szeged.hu/actacybernetica/}{Acta Cybernetica (this is a hyperlink)}.
@@ -108,7 +108,7 @@ Source of example: \href{https://www.inf.u-szeged.hu/actacybernetica/}{Acta Cybe
 \caption{A general interval B\&B algorithm} 
 \label{alg:ibb} 
 \textbf{\underline{Funct}} IBB($S,f$)
-\begin{algorithmic}[1] % sorszámok megjelenítése minden n. sor előtt, most n = 1
+\begin{algorithmic}[1] % display line numbers before every n line, here n = 1
 \State Set the working list ${\cal L}_W$ := $\{S\}$ and the final list ${\cal L}_Q$ := $\{\}$     
 \While{( ${\cal L}_W \neq \emptyset$ )} \label{alg:igoend}
 	\State  Select an interval $X$ from ${\cal L}_W$ \label{step:selrule}\Comment{Selection rule}  

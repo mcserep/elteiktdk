@@ -1,63 +1,75 @@
 ![CI status](https://github.com/mcserep/elteiktdk/workflows/Build%20LaTeX%20document/badge.svg)
 
-See [English version](README_en.md).
+See [Hungarian version](README_hu.md).
 
-# ELTE IK TDK-dolgozat sablon
+# ELTE FI TDK thesis template
 
-A [tdk.tex](tdk.tex) és a belőle előálló [tdk.pdf](tdk.pdf) szolgál kiindulási példaként.
-A sablon alkalmazza a TDK-dolgozatokra vonatkozó formai előírásokat, valamint elkészíti a megadott metaadatok alapján a fedő- és a címlapot.
-A formai megkötések az ELTE Informatikai Karán, valamint az OTDK Informatika Tudományi Szekcióban megszokottak, de általánosan (szükség esetén megfelelő módosításokkal) alkalmazható más szekciók és más egyetemek TDK dolgozataihoz is.
+The [elteiktdk_en.tex](elteiktdk_en.tex) and the produced [elteiktdk_en.pdf](elteiktdk_en.pdf) serves as an example of usage.
+This class template enforces the required formatting rules for TDK theses and generates the cover and title page given on the provided metadata.
+The formatting rules are defined to meet the requirements for TDK theses submitted at the Eötvös Loránd University, Faculty of Informatics. This also fits the formatting requirements of the Computer Science Section of the National Conference of Scientific Students' Associations (OTDK). With sufficient modifications the template should be usable for TDK theses at other national and faculty level sections, too.
 
-A sablon tartalmazza az egy és két oldalas nyomtatáshoz szükséges beállításokat is (ld. `twoside` paraméter), alapértelmezetten a javasolt egy oldalas nyomtatásra konfigurált. (Érdemes figyelembe venni, hogy 20-nál kevesebb lapszám kemény kötésben furcsán mutat, továbbá az ábrák könnyen átütnek az általános 80g/m<sup>2</sup> fénymásolópapíron).
-A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (ld. `\documentlang` parancs).
+The template contains configuration both for single and double sided printing (see `twoside` option), by default it is set to the recommended single side format.
+The template supports producing both Hungarian and English theses, which can be easily controlled (see `\documentlang` command).
 
-## Fordítás
+## Compilation
 
 ```bash
-# tdk.aux fájl generálása (PDF fájl még hibás hivatkozásokat fog tartalmazni)
-pdflatex tdk.tex
-# Irodalomjegyzék generálása
-bibtex tdk
-# Jelölésjegyzék generálása (ha szükséges)
-makeindex -s nomencl.ist -t tdk.nlg -o tdk.nls tdk.nlo
-# Végleges PDF fájl generálása
-pdflatex tdk.tex
-pdflatex tdk.tex
+# Generate elteiktdk_en.aux file
+# (PDF file contains incorrect references yet)
+pdflatex elteiktdk_en.tex
+# Generate bibliography
+bibtex elteiktdk
+# Generate nomenclature (optional)
+makeindex -s nomencl.ist -t elteiktdk_en.nlg \
+  -o elteiktdk_en.nls elteiktdk_en.nlo
+# Generate final PDF file
+pdflatex elteiktdk_en.tex
+pdflatex elteiktdk_en.tex
 ```
 
-**Megjegyzés:** az irodalomjegyzék változása esetén a `bibtex`, majd a `pdflatex` _kétszeri_ futtatása szükséges a helyes hivatkozások előállításához.
+**Note:** in case the bibliography changes, executing `bibtex`, then `pdflatex` _twice_ is required to generate to correct references in the PDF output.
 
-A fordításhoz tetszőleges fejlesztő környezet is használható (pl. [TexStudio](https://www.texstudio.org/)), ugyanezen utasítások kiadásával.
+Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https://www.texstudio.org/)), given the same commands should be executed.
 
-## Fontosabb függőségi csomagok
+## Syntax highlighting of code blocks
 
-**Képkezelés:**
-* Minimális és maximális méret: [adjustbox](https://ctan.org/pkg/adjustbox)
-* Alábrák: [subcaption](https://ctan.org/pkg/subcaption)
-* Forgatás: [rotating](https://ctan.org/pkg/rotating)
+The minted package is also supported for syntax  highlighting, for details see the [documentation](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted).
+For its usage the Python interpreter and the `Pygments` package must be installed as a prerequisite, then you should uncomment its loading at the beginning of `elteiktdk_en.tex`.
 
-**Táblázatkezelés:**
-* Oszlopok és sorok egyesítése: [multirow](https://ctan.org/pkg/multirow)
-* Tördelhető táblázat: [longtable](https://ctan.org/pkg/longtable)
-* Cellatartalom vertikális igazítása: [array](https://ctan.org/pkg/array)
-* Többsoros cellák (sortörés): [makecell](https://ctan.org/pkg/makecell)
+## Required packages (without completeness)
 
-**Felsorolások:**
-* Szoros térközű felsorolások: [paralist](https://ctan.org/pkg/paralist)
+**Image handling:**
 
-**Matematika és algoritmusok:**
-* Matematikai formulák: [amsmath](https://ctan.org/pkg/amsmath)
-* Matematikai definíciók: [amsthm](https://ctan.org/pkg/amsthm)
-* Matematikai szimbólumok: [amsfonts](https://ctan.org/pkg/amsfonts)
-* * Algoritmusok: [algpseudocode](https://www.ctan.org/pkg/algorithmicx)
-* Kódblokkok: [listingsutf8](https://ctan.org/pkg/listingsutf8)
+* Minimal and maximal size: [adjustbox](https://ctan.org/pkg/adjustbox)
+* Subfigures: [subcaption](https://ctan.org/pkg/subcaption)
+* Rotation: [rotating](https://ctan.org/pkg/rotating)
 
-**Egyebek:**
-* Teendők: [todonotes](https://ctan.org/pkg/todonotes)
+**Table management:**
 
-## Előre definiált tételszerű bekezdések
+* Multirow and multicolumn support: [multirow](https://ctan.org/pkg/multirow)
+* Breakable tables: [longtable](https://ctan.org/pkg/longtable)
+* Vertical positioning of cells: [array](https://ctan.org/pkg/array)
+* Multiline cells (line breaks): [makecell](https://ctan.org/pkg/makecell)
 
-* *definition*: Definíció
-* *theorem*: Tétel
-* *remark*: Emlékeztető
-* *note*: Megjegyzés
+**Lists:**
+
+* Lists with narrow spacing: [paralist](https://ctan.org/pkg/paralist)
+
+**Mathematical formulas and algorithms:**
+
+* Mathematical formulas: [amsmath](https://ctan.org/pkg/amsmath)
+* Mathematical definitions: [amsthm](https://ctan.org/pkg/amsthm)
+* Mathematical symbols: [amsfonts](https://ctan.org/pkg/amsfonts)
+* Algorithms: [algpseudocode](https://www.ctan.org/pkg/algorithmicx)
+* Code blocks: [listingsutf8](https://ctan.org/pkg/listingsutf8)
+
+**Miscellaneous:**
+
+* Todos: [todonotes](https://ctan.org/pkg/todonotes)
+
+## Predefined theorem-like environments
+
+* *definition*
+* *theorem*
+* *remark*
+* *note*

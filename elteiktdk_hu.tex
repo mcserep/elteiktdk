@@ -1,0 +1,118 @@
+\documentclass[
+	%parspace, % Add vertical space between paragraphs
+	%noindent, % No indentation of first lines in each paragraph
+	%nohyp, % No hypenation of words
+	%twoside, % Double sided format
+	%draft, % Quicker draft compilation without rendering images
+	%final, % Set final to hide todos
+]{elteiktdk}[2023/04/10]
+
+% The minted package is also supported for source highlighting
+% See minted-intregration.tex for example
+%\usepackage[newfloat]{minted}
+
+% Document's metadata
+\title{TDK-dolgozat címe}
+\date{2023}
+
+% Author(s)' metadata
+\author{Hallgató Hanga}
+\degree{programtervező informatikus MSc}
+\period{2. évfolyam}
+\coauthor{Hallgató Harold}
+\codegree{programtervező informatikus BSc}
+\coperiod{3. évfolyam}
+
+% Superivsor(s)' metadata
+\supervisor{Témavezető Tamás}
+\affiliation{egyetemi tanársegéd}
+\cosupervisor{Témavezető Teréz}
+\coaffiliation{egyetemi adjunktus}
+
+% University's metadata
+\university{Eötvös Loránd Tudományegyetem}
+\faculty{Informatikai Kar}
+\department{Programozáselmélet és Szoftvertechnológiai Tanszék}
+\city{Budapest}
+\logo{elte_cimer_szines}
+
+% Add bibliography file
+\addbibresource{elteiktdk.bib}
+
+% The document
+\begin{document}
+
+% Set document language
+\documentlang{hungarian}
+%\documentlang{english}
+
+% List of todos (not in the final document)
+%\listoftodos[\todolabel]
+%\cleardoublepage
+
+% Cover and title page (mandatory)
+\makecover
+\cleardoublepage
+\maketitle
+
+% Table of contents (mandatory)
+\tableofcontents
+\cleardoublepage
+
+% Main content
+\input{samples_hu/intro.tex}
+\cleardoublepage
+
+\input{samples_hu/spec.tex}
+\cleardoublepage
+
+\input{samples_hu/impl.tex}
+\cleardoublepage
+
+\input{samples_hu/sum.tex}
+\cleardoublepage
+
+% Acknowledgements (optional) - in case your thesis received funding or would like to express special thanks to someone
+\chapter*{\acklabel}
+\addcontentsline{toc}{chapter}{\acklabel}
+Amennyiben a TDK projekted pénzügyi támogatást kapott egy projektből vagy az egyetemtől, jellemzően kötelező feltüntetni a dolgozatban is. A dolgozat elkészítéséhez segítséget nyújtó oktatók, hallgatótársak, kollégák felé is nyilvánítható külön köszönet.
+
+% Appendices (optional) - useful for detailed information in long tables, many and/or large figures, etc.
+\appendix
+\input{samples_hu/sim.tex}
+\cleardoublepage
+
+% Bibliography (mandatory)
+\phantomsection
+\addcontentsline{toc}{chapter}{\biblabel}
+\printbibliography[title=\biblabel]
+\cleardoublepage
+
+% List of figures (optional) - useful over 3-5 figures
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstfigurelabel}
+\listoffigures
+\cleardoublepage
+
+% List of tables (optional) - useful over 3-5 tables
+\phantomsection
+\addcontentsline{toc}{chapter}{\lsttablelabel}
+\listoftables
+\cleardoublepage
+
+% List of algorithms
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstalgorithmlabel}
+\listofalgorithms
+\cleardoublepage
+
+% List of codes (optional) - useful over 3-5 code samples
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstcodelabel}
+\lstlistoflistings
+\cleardoublepage
+
+% List of symbols (optional)
+%\printnomenclature
+
+\end{document}
