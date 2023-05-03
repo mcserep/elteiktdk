@@ -1,4 +1,6 @@
 ![CI status](https://github.com/mcserep/elteiktdk/workflows/Build%20LaTeX%20document/badge.svg)
+[![Overleaf template](https://img.shields.io/badge/Overleaf-TDK%20Thesis%20Template%20(ELTE%20FI)-brightgreen)](https://www.overleaf.com/latex/templates/tdk-thesis-template-elte-fi/mxnndxkmdmkd)
+
 
 See [Hungarian version](README_hu.md).
 
@@ -35,6 +37,11 @@ Compilation might be carried out through a preferred IDE (e.g. [TexStudio](https
 
 The minted package is also supported for syntax  highlighting, for details see the [documentation](https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted).
 For its usage the Python interpreter and the `Pygments` package must be installed as a prerequisite, then you should uncomment its loading at the beginning of `elteiktdk_en.tex`.
+
+## Overleaf
+
+*Overleaf* is a free, easy to use online, collaborative LaTeX editor; similar like e.g. Google Docs, but for LateX documents.
+You can also find the latest release of this ELTE FI bachelor and master thesis template [on Overleaf](https://www.overleaf.com/latex/templates/tdk-thesis-template-elte-fi/mxnndxkmdmkd).
 
 ## Required packages (without completeness)
 
