@@ -20,7 +20,7 @@ The template supports producing both Hungarian and English theses, which can be 
 # (PDF file contains incorrect references yet)
 pdflatex elteiktdk_en.tex
 # Generate bibliography
-bibtex elteiktdk
+bibtex elteiktdk_en
 # Generate nomenclature (optional)
 makeindex -s nomencl.ist -t elteiktdk_en.nlg \
   -o elteiktdk_en.nls elteiktdk_en.nlo

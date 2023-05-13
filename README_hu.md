@@ -14,7 +14,7 @@ A sablon magyar és angol nyelvű dokumentumok elkészítését is támogatja (l
 # (PDF fájl még hibás hivatkozásokat fog tartalmazni)
 pdflatex elteiktdk_hu.tex
 # Irodalomjegyzék generálása
-bibtex tdk
+bibtex elteiktdk_hu
 # Jelölésjegyzék generálása (ha szükséges)
 makeindex -s nomencl.ist -t elteiktdk_hu.nlg \
   -o elteiktdk_hu.nls elteiktdk_hu.nlo
