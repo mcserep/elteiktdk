@@ -41,7 +41,7 @@ For its usage the Python interpreter and the `Pygments` package must be installe
 ## Overleaf
 
 *Overleaf* is a free, easy to use online, collaborative LaTeX editor; similar like e.g. Google Docs, but for LateX documents.
-You can also find the latest release of this ELTE FI bachelor and master thesis template [on Overleaf](https://www.overleaf.com/latex/templates/tdk-thesis-template-elte-fi/mxnndxkmdmkd).
+You can also find the latest release of this thesis template [on Overleaf](https://www.overleaf.com/latex/templates/tdk-thesis-template-elte-fi/mxnndxkmdmkd).
 
 ## Required packages (without completeness)
 

@@ -35,7 +35,7 @@ Használatához szükséges a Python interpreter és a `Pygments` csomag telepí
 ## Overleaf
 
 Az *Overleaf* egy ingyenes, könnyen használható, kollaboratív, online LaTeX szerkesztő. Hasonló, mint például a Google Docs, de LateX dokumentumokhoz.
-Az ELTE IK szakdolgozat és diplomamunka sablon legfrissebb kiadását [Overleafen is megtalálod](https://www.overleaf.com/latex/templates/tdk-thesis-template-elte-fi/mxnndxkmdmkd).
+Az ELTE IK TDK-dolgozat sablon legfrissebb kiadását [Overleafen is megtalálod](https://www.overleaf.com/latex/templates/tdk-thesis-template-elte-fi/mxnndxkmdmkd).
 
 ## Fontosabb függőségi csomagok
 
